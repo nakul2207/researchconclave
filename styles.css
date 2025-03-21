@@ -541,13 +541,14 @@ nav ul li a.active::after {
     text-align: center;
     width: 275px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
+    /* transition: var(--transition); */
     border-bottom: 3px solid transparent;
     position: relative;
     overflow: hidden;
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    /* animation: fadeInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards; */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Staggered animation for committee cards */
@@ -568,8 +569,10 @@ nav ul li a.active::after {
 }
 
 /* Subtle floating animation for cards */
-.committee-card.active {
-    animation: float 5s ease-in-out infinite;
+.committee-card.active {    
+    opacity: 1;
+    transform: translateY(0);
+    /* animation: float 5s ease-in-out infinite; */
 }
 
 /* After entering view, add a subtle shine effect */
@@ -1081,6 +1084,10 @@ footer {
     .timeline-item:nth-child(even) .timeline-content {
         border-right: none;
         border-left: 3px solid var(--primary-color);
+    }    
+    .layer {
+        flex-wrap: wrap; /* Allow cards to wrap to the next line */
+        gap: 2rem; /* Add spacing between cards */
     }
 }
 
@@ -1130,10 +1137,9 @@ footer {
     .section-header h2 {
         font-size: 2rem;
     }
-
-    .committee-card {
-        width: 100%;
-        max-width: 350px;
+    .layer {
+        flex-wrap: wrap; 
+        gap: 2rem; 
     }
 }
 
@@ -1158,28 +1164,22 @@ footer {
     .hero-buttons .btn {
         margin: 0.5rem;
     }
+
+    .committee-image {
+        width: 100px; /* Smaller image size */
+        height: 100px;
+    }
+
+    .committee-card h3 {
+        font-size: var(--font-size-md); /* Adjust heading size */
+    }
+
+    .committee-card p {
+        font-size: var(--font-size-sm); 
+    }
+
+    .layer {
+        gap: 1.5rem;
+    }
+    
 }
-
-/* JavaScript Modifications:
-1. Add this to your script.js file to enable the floating animation for committee cards
-   when they come into view.
-
-const committeeCards = document.querySelectorAll('.committee-card');
-const options = {
-    threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target); // Only add the class once
-        }
-    });
-}, options);
-
-committeeCards.forEach(card => {
-    observer.observe(card);
-});
-*/

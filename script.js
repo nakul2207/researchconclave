@@ -176,3 +176,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+// JavaScript to animate committee cards on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const committeeCards = document.querySelectorAll('.committee-card');
+
+    const observerOptions = {
+        threshold: 0.2, // Trigger when 20% of the card is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active'); // Add the active class
+                observer.unobserve(entry.target); // Stop observing once the animation is applied
+            }
+        });
+    }, observerOptions);
+
+    committeeCards.forEach(card => observer.observe(card));
+});
