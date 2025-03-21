@@ -22,14 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Sticky header on scroll
+    // Sticky header on scroll - UPDATED to use class instead of inline styles
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
-            header.style.backgroundColor = '#fff';
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            header.classList.add('scrolled');
         } else {
-            header.style.backgroundColor = 'transparent';
-            header.style.boxShadow = 'none';
+            header.classList.remove('scrolled');
         }
     });
 
@@ -107,40 +105,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Subtle parallax effect for hero section
+    // Enhanced parallax effect for hero section - UPDATED for more subtle effect
     window.addEventListener('scroll', function() {
         const scrollPosition = window.pageYOffset;
         const heroSection = document.querySelector('.hero');
         
         if (heroSection) {
-            heroSection.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            // Using a smaller multiplier (0.3 instead of 0.5) for a more sophisticated effect
+            heroSection.style.backgroundPositionY = (scrollPosition * 0.3) + 'px';
         }
     });
 
-    // Add subtle hover effects to cards
-    const cards = document.querySelectorAll('.feature-card, .committee-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-        });
-    });
+    // REMOVED: JavaScript-based card hover effects
+    // These effects are now handled by CSS for better performance and smoother transitions
 
-    // Initialize AOS (Animate on Scroll) like functionality
+    // Enhanced Intersection Observer implementation
     function initRevealAnimations() {
         const options = {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'  // Triggers animations slightly earlier
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    // This makes the animation happen only once per element
+                    observer.unobserve(entry.target);
                 }
             });
         }, options);
@@ -151,4 +142,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initRevealAnimations();
+
+    // Add a class to body after page has loaded completely
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+
+    // Copy to clipboard functionality for committee contact info
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const textToCopy = this.getAttribute('onclick').split("'")[1];
+            
+            // Create a temporary textarea element to copy from
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = textToCopy;
+            document.body.appendChild(tempTextarea);
+            
+            // Select and copy the text
+            tempTextarea.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary element
+            document.body.removeChild(tempTextarea);
+            
+            // Provide visual feedback (instead of alert)
+            const originalIcon = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i>';
+            
+            setTimeout(() => {
+                this.innerHTML = originalIcon;
+            }, 1500);
+        });
+    });
 });

@@ -1,13 +1,45 @@
-/* Base Styles */
+/* Enhanced Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
 :root {
-    --primary-color: #03045e;
-    --secondary-color: #90e0ef;
-    --accent-color: #3498db;
-    --light-color: #f4f4f4;
-    --dark-color: #333;
-    --text-color: #555;
-    --heading-color: #222;
-    --transition: all 0.3s ease;
+    /* Rich color system */
+    --primary-color: #1a237e; /* Deep indigo - more sophisticated */
+    --primary-light: #534bae; /* Lighter shade for hover states */
+    --primary-dark: #000051; /* Darker shade for depth */
+    
+    --secondary-color: #c5cae9; /* Light indigo - subtle complement */
+    --secondary-light: #f8fdff; /* Almost white with hint of color */
+    
+    /* Neutral palette for text and backgrounds */
+    --neutral-100: #ffffff;
+    --neutral-200: #f5f7fa;
+    --neutral-300: #e4e7eb;
+    --neutral-600: #616e7c;
+    --neutral-800: #1f2933;
+    
+    /* Gold accent for important elements and calls to action */
+    --accent-color: #ffc107;
+    --accent-dark: #c79100;
+    
+    /* Text colors */
+    --text-color: #3c4257;
+    --heading-color: #1f2933;
+    
+    /* Typography system */
+    --font-primary: 'Source Sans Pro', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-md: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 1.875rem;  /* 30px */
+    --font-size-4xl: 2.25rem;   /* 36px */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 html {
@@ -20,22 +52,20 @@ html {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-primary);
+    line-height: var(--line-height-normal);
     color: var(--text-color);
-    background-color: #fefae0;
+    background-color: var(--neutral-200);
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
     font-weight: 700;
     color: var(--heading-color);
     margin-bottom: 1rem;
+    line-height: var(--line-height-tight);
 }
 
 a {
@@ -64,7 +94,7 @@ img {
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: var(--font-size-3xl);
     margin-bottom: 0.5rem;
     color: var(--primary-color);
     position: relative;
@@ -72,34 +102,38 @@ img {
 }
 
 .underline {
-    height: 4px;
+    height: 3px;
     width: 70px;
-    background: var(--secondary-color);
+    background: var(--accent-color);
     margin: 0 auto;
     margin-top: 0.5rem;
 }
 
+/* Enhanced Button Styles */
 .btn {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 30px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
     cursor: pointer;
     transition: var(--transition);
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .primary-btn {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--neutral-100);
     border: 2px solid var(--primary-color);
 }
 
 .primary-btn:hover {
-    background-color: transparent;
-    color: var(--primary-color);
+    background-color: var(--primary-dark);
+    color: var(--neutral-100);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .secondary-btn {
@@ -110,13 +144,15 @@ img {
 
 .secondary-btn:hover {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--neutral-100);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Header Styles */
+/* Enhanced Header Styles */
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--neutral-100);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     position: fixed;
     top: 0;
     left: 0;
@@ -125,13 +161,17 @@ header {
     transition: var(--transition);
 }
 
+header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 4rem;
     margin: 0 auto;
-    background: #fff;
+    background: var(--neutral-100);
 }
 
 .logo h1 {
@@ -141,7 +181,7 @@ header {
 }
 
 .logo span {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 nav ul {
@@ -153,9 +193,10 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--dark-color);
+    color: var(--neutral-800);
     font-weight: 600;
     position: relative;
+    padding: 0.5rem 0;
 }
 
 nav ul li a:hover,
@@ -172,21 +213,23 @@ nav ul li a::after {
     height: 2px;
     background-color: var(--primary-color);
     transition: var(--transition);
+    opacity: 0;
 }
 
 nav ul li a:hover::after,
 nav ul li a.active::after {
     width: 100%;
+    opacity: 1;
 }
 
 .menu-toggle {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--dark-color);
+    color: var(--neutral-800);
 }
 
-/* Hero Section */
+/* Enhanced Hero Section */
 .hero {
     height: 100vh;
     background-image: url('./public/images/building.jpg');
@@ -198,7 +241,7 @@ nav ul li a.active::after {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    color: var(--neutral-100);
 }
 
 .logo {
@@ -206,12 +249,12 @@ nav ul li a.active::after {
 }
 
 .hero-overlay {
-    position: absolute ;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(to right, rgba(26, 35, 126, 0.85), rgba(0, 0, 0, 0.7));
 }
 
 .hero-content {
@@ -222,24 +265,17 @@ nav ul li a.active::after {
 }
 
 .hero-content h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: var(--neutral-100);
     position: relative;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 6px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Animated title effect */
-.hero-content h1::before {
-    content: none;
-}
-
-.hero-content h1::after {
-    content: none;
-}
-
 .hero-content h1 .animated-link-effect {
     pointer-events: none;
     border-radius: 6px;
@@ -272,14 +308,15 @@ nav ul li a.active::after {
 }
 
 .hero-content h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-2xl);
     margin-bottom: 1.5rem;
-    color: #fff;
-    font-weight: 400;
+    color: var(--neutral-100);
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: var(--font-size-lg);
     margin-bottom: 2rem;
     line-height: 1.8;
 }
@@ -296,6 +333,8 @@ nav ul li a.active::after {
     display: flex;
     justify-content: center;
 }
+
+/* Fixed scroll-down section with proper animation */
 .scroll-down {
     position: absolute;
     bottom: 2rem;
@@ -305,14 +344,27 @@ nav ul li a.active::after {
 }
 
 .scroll-down a {
-    color: #fff;
+    display: inline-block;
+    color: var(--neutral-100);
     font-size: 1.5rem;
+    opacity: 0.8;
+    transition: var(--transition);
 }
 
-/* About Section */
+.scroll-down a:hover {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+.animate-bounce {
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+/* Enhanced About Section */
 .about {
     padding: 6rem 0;
-    background-color: #fff;
+    background-color: var(--neutral-100);
 }
 
 .about-content {
@@ -329,17 +381,25 @@ nav ul li a.active::after {
 .about-text p {
     margin-bottom: 1.5rem;
     text-align: justify;
+    font-size: var(--font-size-md);
+    color: var(--text-color);
+    line-height: 1.7;
 }
 
 .about-image img {
-    border-radius: 5px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
 }
 
-/* Key Features Section */
+.about-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Enhanced Key Features Section */
 .key-features {
     padding: 6rem 0;
-    background-color: var(--light-color);
+    background-color: var(--neutral-200);
 }
 
 .features-grid {
@@ -349,34 +409,50 @@ nav ul li a.active::after {
 }
 
 .feature-card {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 2rem;
+    background: linear-gradient(135deg, var(--neutral-100) 0%, var(--neutral-200) 100%);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
+    border-top: 3px solid transparent;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--primary-color);
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-light);
+    color: var(--neutral-100);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card h3 {
-    font-size: 1.2rem;
+    font-size: var(--font-size-lg);
     margin-bottom: 1rem;
+    color: var(--primary-dark);
 }
 
-/* Venue Section */
+.feature-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Enhanced Venue Section */
 .venue {
     padding: 6rem 0;
-    background-color: #fff;
+    background-color: var(--neutral-100);
 }
 
 .venue-content {
@@ -391,38 +467,54 @@ nav ul li a.active::after {
 }
 
 .venue-text h3 {
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.venue-text h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 3px;
+    width: 50px;
+    background-color: var(--accent-color);
 }
 
 .venue-text p {
     margin-bottom: 1.5rem;
     text-align: justify;
+    line-height: 1.7;
+    color: var(--text-color);
 }
 
 .venue-map iframe {
-    border-radius: 5px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-/* Committee Section */
+/* Enhanced Committee Section with New Animations */
 .committee {
-    padding: 4rem 0;
-    background-color: #f9f9f9;
+    padding: 6rem 0;
+    background-color: var(--neutral-200);
+    overflow: hidden; /* Prevent horizontal scroll from animations */
 }
 
 .section-header h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-3xl);
     text-align: center;
-    color: #333;
+    color: var(--primary-dark);
     margin-bottom: 1rem;
 }
 
 .underline {
     width: 80px;
     height: 3px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     margin: 0 auto 2rem auto;
     border-radius: 2px;
 }
@@ -437,34 +529,91 @@ nav ul li a.active::after {
 .layer {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    gap: 2.5rem;
+    /* flex-wrap: wrap; */
 }
 
-
+/* Enhanced committee card with animations */
 .committee-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 3rem 1.6rem;
+    background-color: var(--neutral-100);
+    border-radius: 8px;
+    padding: 3rem 2rem;
     text-align: center;
-    width: 250px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 275px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border-bottom: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Staggered animation for committee cards */
+.committee-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.committee-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.committee-card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.committee-card:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+/* Subtle floating animation for cards */
+.committee-card.active {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* After entering view, add a subtle shine effect */
+.committee-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.8s;
+    z-index: 1;
+    opacity: 0;
 }
 
 .committee-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.committee-card:hover::after {
+    animation: shine 1.5s forwards;
 }
 
 .committee-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 1rem;
+    margin: 0 auto 1.5rem;
     padding: 3px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    position: relative;
+    z-index: 2;
 }
 
 .committee-image img {
@@ -472,68 +621,83 @@ nav ul li a.active::after {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    transition: var(--transition);
+}
+
+.committee-card:hover .committee-image img {
+    transform: scale(1.05);
 }
 
 /* Text Styling */
 .committee-card h3 {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 0.3rem;
+    font-size: var(--font-size-lg);
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .committee-card p {
-    color: #555;
-    font-size: 0.85rem;
+    color: var(--text-color);
+    font-size: var(--font-size-md);
     font-weight: 500;
     margin-bottom: 0.3rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Contact icons */
 .contact-icons {
-    margin-top: 0.8rem;
+    margin-top: 1.2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .copy-btn {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--neutral-100);
     border: none;
-    padding: 0.5rem;
+    padding: 0.6rem;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0 3px;
+    transition: var(--transition);
+    margin: 0 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .copy-btn:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .copy-btn i {
     font-size: 1rem;
 }
 
-
-
+/* Enhanced Timeline Section */
 .timeline {
     padding: 6rem 0;
-    background-color: #fff;
+    background-color: var(--neutral-100);
 }
 
 .timeline-container {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
+    padding: 2rem 0;
 }
 
 .timeline-container::after {
     content: '';
     position: absolute;
-    width: 4px;
-    background-color: var(--primary-color);
+    width: 3px;
+    background-color: var(--primary-light);
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -2px;
+    margin-left: -1.5px;
+    opacity: 0.6;
 }
 
 .timeline-item {
@@ -541,6 +705,7 @@ nav ul li a.active::after {
     position: relative;
     width: 50%;
     box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 .timeline-item:nth-child(odd) {
@@ -553,53 +718,80 @@ nav ul li a.active::after {
 
 .timeline-dot {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: var(--secondary-color);
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary-color);
+    border: 4px solid var(--neutral-100);
     border-radius: 50%;
     z-index: 1;
-    right: -10px;
+    right: -12px;
     top: 15px;
+    box-shadow: 0 0 0 4px rgba(26, 35, 126, 0.2);
 }
 
 .timeline-item:nth-child(even) .timeline-dot {
-    left: -10px;
+    left: -12px;
 }
 
 .timeline-date {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 0.5rem 1rem;
     background-color: var(--primary-color);
-    color: #fff;
-    border-radius: 5px;
+    color: var(--neutral-100);
+    border-radius: 30px;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-size: var(--font-size-sm);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-content {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    background-color: var(--neutral-100);
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid var(--primary-color);
+    transition: var(--transition);
 }
 
-/* Speakers Section */
+.timeline-item:nth-child(even) .timeline-content {
+    border-left: none;
+    border-right: 3px solid var(--primary-color);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    color: var(--primary-dark);
+    margin-bottom: 0;
+    font-size: var(--font-size-lg);
+}
+
+/* Enhanced Speakers Section */
 .speakers {
     padding: 6rem 0;
-    background-color: var(--light-color);
+    background-color: var(--neutral-200);
 }
 
 .speakers-coming-soon {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: var(--font-size-xl);
     font-weight: 600;
     color: var(--primary-color);
+    padding: 3rem;
+    background-color: var(--neutral-100);
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid var(--primary-color);
 }
 
-/* Contact Section */
+/* Enhanced Contact Section */
 .contact {
     padding: 6rem 0;
-    background-color: #fff;
+    background-color: var(--neutral-100);
 }
 
 .contact-content {
@@ -615,7 +807,7 @@ nav ul li a.active::after {
 .contact-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
 }
 
 .contact-item i {
@@ -625,6 +817,12 @@ nav ul li a.active::after {
     margin-top: 0.3rem;
 }
 
+.contact-item p {
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
 .contact-form form {
     display: flex;
     flex-direction: column;
@@ -632,12 +830,21 @@ nav ul li a.active::after {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--neutral-300);
+    border-radius: 8px;
     outline: none;
-    font-family: inherit;
+    font-family: var(--font-primary);
+    transition: var(--transition);
+    background-color: var(--neutral-200);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    background-color: var(--neutral-100);
 }
 
 .contact-form textarea {
@@ -649,10 +856,10 @@ nav ul li a.active::after {
     align-self: flex-start;
 }
 
-/* Footer Section */
+/* Enhanced Footer Section */
 footer {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--primary-dark);
+    color: var(--neutral-300);
     padding: 4rem 0 0;
 }
 
@@ -660,30 +867,33 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
 .footer-logo h2 {
-    color: #fff;
-    font-size: 1.8rem;
+    color: var(--neutral-100);
+    font-size: var(--font-size-2xl);
     margin-bottom: 1rem;
 }
 
 .footer-logo span {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 .footer-logo p {
     max-width: 300px;
+    line-height: 1.7;
+    opacity: 0.9;
 }
 
 .footer-links h3,
 .footer-previous h3 {
-    color: #fff;
+    color: var(--neutral-100);
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
+    font-size: var(--font-size-lg);
 }
 
 .footer-links h3::after,
@@ -694,23 +904,24 @@ footer {
     left: 0;
     width: 50px;
     height: 2px;
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
 }
 
 .footer-links ul li,
 .footer-previous ul li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 .footer-links ul li a,
 .footer-previous ul li a {
     color: rgba(255, 255, 255, 0.8);
     transition: var(--transition);
+    font-size: var(--font-size-md);
 }
 
 .footer-links ul li a:hover,
 .footer-previous ul li a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
     padding-left: 5px;
 }
 
@@ -720,11 +931,16 @@ footer {
     text-align: center;
 }
 
-/* Animation Classes */
+.footer-bottom p {
+    opacity: 0.8;
+    font-size: var(--font-size-sm);
+}
+
+/* Enhanced Animation Classes */
 .animate-text {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.7s ease forwards;
+    animation: fadeInUp 0.7s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .delay-1 {
@@ -743,43 +959,7 @@ footer {
     animation-delay: 0.8s;
 }
 
-.animate-bounce {
-    animation: bounce 2s infinite;
-}
-
-.reveal-left, .reveal-right, .reveal-up {
-    opacity: 0;
-    transition: all 1s ease;
-}
-
-.reveal-left {
-    transform: translateX(-50px);
-}
-
-.reveal-right {
-    transform: translateX(50px);
-}
-
-.reveal-up {
-    transform: translateY(50px);
-}
-
-.reveal-left.active, .reveal-right.active, .reveal-up.active {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Fixed bounce animation - only vertical movement */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -792,10 +972,76 @@ footer {
     }
 }
 
-/* Responsive Styles */
+.reveal-left, .reveal-right, .reveal-up {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal-left {
+    transform: translateX(-30px);
+}
+
+.reveal-right {
+    transform: translateX(30px);
+}
+
+.reveal-up {
+    transform: translateY(30px);
+}
+
+.reveal-left.active, .reveal-right.active, .reveal-up.active {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* New animations for committee cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes shine {
+    0% {
+        opacity: 0;
+        left: -50%;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        left: 120%;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
+    }
+}
+
+/* Enhanced Responsive Styles */
 @media screen and (max-width: 992px) {
     .hero-content h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
     
     .hero-content h2 {
@@ -806,7 +1052,7 @@ footer {
     .venue-content,
     .contact-content {
         flex-direction: column;
-        gap: 2rem;
+        gap: 3rem;
     }
     
     .timeline-container::after {
@@ -824,16 +1070,25 @@ footer {
     }
     
     .timeline-dot {
-        left: 21px;
+        left: 19px;
         right: auto;
     }
     
     .timeline-item:nth-child(even) .timeline-dot {
-        left: 21px;
+        left: 19px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        border-right: none;
+        border-left: 3px solid var(--primary-color);
     }
 }
 
 @media screen and (max-width: 768px) {
+    .header-container {
+        padding: 1rem 2rem;
+    }
+    
     .menu-toggle {
         display: block;
     }
@@ -844,7 +1099,7 @@ footer {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #fff;
+        background-color: var(--neutral-100);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         flex-direction: column;
         padding: 2rem 0;
@@ -865,7 +1120,7 @@ footer {
     }
     
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .hero-content h2 {
@@ -875,14 +1130,56 @@ footer {
     .section-header h2 {
         font-size: 2rem;
     }
-}
 
-@keyframes rotate {
-    from {
-        transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
-    }
-
-    to {
-        transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
+    .committee-card {
+        width: 100%;
+        max-width: 350px;
     }
 }
+
+@media screen and (max-width: 576px) {
+    .header-container {
+        padding: 1rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .timeline-content {
+        padding: 1rem;
+    }
+    
+    .timeline-date {
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-buttons .btn {
+        margin: 0.5rem;
+    }
+}
+
+/* JavaScript Modifications:
+1. Add this to your script.js file to enable the floating animation for committee cards
+   when they come into view.
+
+const committeeCards = document.querySelectorAll('.committee-card');
+const options = {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target); // Only add the class once
+        }
+    });
+}, options);
+
+committeeCards.forEach(card => {
+    observer.observe(card);
+});
+*/
