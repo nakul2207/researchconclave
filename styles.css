@@ -10,6 +10,10 @@
     --transition: all 0.3s ease;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -185,7 +189,7 @@ nav ul li a.active::after {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-image: url('./public/images/building.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -196,6 +200,10 @@ nav ul li a.active::after {
     justify-content: center;
     text-align: center;
     color: #fff;
+}
+
+.logo {
+    width: 100px;
 }
 
 .hero-overlay {
@@ -215,9 +223,53 @@ nav ul li a.active::after {
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
     color: #fff;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+/* Animated title effect */
+.hero-content h1::before {
+    content: none;
+}
+
+.hero-content h1::after {
+    content: none;
+}
+
+.hero-content h1 .animated-link-effect {
+    pointer-events: none;
+    border-radius: 6px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude;
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+}
+
+.hero-content h1 .animated-link-effect div {
+    background-image: conic-gradient(from 0 at 50% 50%, rgba(255, 255, 255, .5) 0deg, rgba(255, 255, 255, 0) 60deg, rgba(255, 255, 255, 0) 310deg, rgba(255, 255, 255, .5) 360deg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    animation: rotate 2s linear infinite;
+    aspect-ratio: 1;
 }
 
 .hero-content h2 {
@@ -241,6 +293,10 @@ nav ul li a.active::after {
     margin: 0 10px;
 }
 
+.download-btn {
+    display: flex;
+    justify-content: center;
+}
 .scroll-down {
     position: absolute;
     bottom: 2rem;
@@ -753,5 +809,15 @@ footer {
     
     .section-header h2 {
         font-size: 2rem;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
     }
 }
